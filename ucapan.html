@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ucapan Spesial Untuk Meiyan Kakros</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 100%);
+            color: #333;
+            padding-top: 80px; 
+            padding-bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(8px);
+            text-align: center;
+            padding: 16px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+        }
+
+        .navbar h2 {
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            color: #d81b60;
+            font-weight: 600;
+        }
+
+        /* Container Surat Utama */
+        .content-container {
+            width: 90%;
+            max-width: 420px; 
+            background-color: #fffaf0; 
+            border: 2px dashed #ffb6c1;
+            border-radius: 16px;
+            padding: 35px 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .wishes h1 {
+            font-family: 'Caveat', cursive;
+            font-size: 2.6rem;
+            color: #d81b60;
+            margin-bottom: 10px;
+        }
+
+        .wishes p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 30px;
+            min-height: 120px;
+        }
+
+        .cursor::after {
+            content: '|';
+            animation: blink 1s infinite;
+            color: #d81b60;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .gallery-title {
+            font-family: 'Caveat', cursive;
+            font-size: 2.3rem;
+            color: #ad1457;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .gallery-title::after {
+            content: ' ✨';
+        }
+
+        .photo-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-bottom: 35px;
+        }
+
+        .polaroid {
+            width: 100%;
+            background-color: #ffffff;
+            padding: 12px 12px 25px 12px; 
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        .polaroid img {
+            width: 100%;
+            height: auto;
+            border-radius: 2px;
+            display: block;
+        }
+
+        .polaroid .caption {
+            font-family: 'Caveat', cursive;
+            font-size: 1.6rem;
+            color: #333;
+            margin-top: 15px;
+        }
+
+        /* 4. Animasi Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        /* Rotasi organik saat foto muncul */
+        .reveal.active:nth-child(odd) {
+            opacity: 1;
+            transform: translateY(0) rotate(-2deg);
+        }
+
+        .reveal.active:nth-child(even) {
+            opacity: 1;
+            transform: translateY(0) rotate(2deg);
+        }
+
+        /* Tombol WhatsApp */
+        .btn-wa {
+            display: inline-block;
+            background-color: #25D366;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 14px 25px;
+            font-weight: 600;
+            border-radius: 30px;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 280px;
+        }
+
+        .btn-wa:active, .btn-wa:hover {
+            background-color: #1ebd58;
+            transform: translateY(2px);
+            box-shadow: 0 2px 10px rgba(37, 211, 102, 0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <h2>SELAMAT ULANG TAHUN</h2>
+    </nav>
+
+    <audio id="bg-music" src="audio/ultah.mp3" loop></audio>
+
+    <div class="content-container">
+        
+        <div class="wishes">
+            <h1>Dear Meli,</h1>
+            <p id="typing-text" class="cursor"></p>
+        </div>
+
+        <h2 class="gallery-title">Kenangan kita</h2>
+        
+        <div class="photo-stack">
+            <div class="polaroid reveal">
+                <img src="images/Pict3.png" alt="Kenangan 1">
+                <p class="caption">Pertama Kali kamu join Kandang Alwi</p>
+            </div>
+            <div class="polaroid reveal">
+                <img src="images/Pict1.png" alt="Kenangan 1">
+                <p class="caption">Ketemu Polar Bear di Kandang Alwi</p>
+            </div>
+            <div class="polaroid reveal">
+                <img src="images/Pict2.png" alt="Kenangan 1">
+                <p class="caption">Pas kamu tau bisa duduk di servernya</p>
+            </div>
+            <div class="polaroid reveal">
+                <img src="images/Pict4.png" alt="Kenangan 1">
+                <p class="caption">Bebek Pink kesayangan Tank</p>
+            </div>
+            <div class="polaroid reveal">
+                <img src="images/Pict5.png" alt="Kenangan 1">
+                <p class="caption">Bantai Bantai Poke di ML</p>
+            </div>
+            <div class="polaroid reveal">
+                <img src="images/Pict6.png" alt="Kenangan 1">
+                <p class="caption">First time main Left 4 Dead</p>
+            </div>
+        </div>
+
+        <a href="https://wa.me/62895808588288?text=makasih%20yaaa" target="_blank" class="btn-wa">
+            kirim makasih ke Ray 💬
+        </a>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const audio = document.getElementById('bg-music');
+            audio.volume = 0.3;
+            
+            const fireConfetti = () => {
+                confetti({
+                    particleCount: 150,
+                    spread: 80,
+                    origin: { y: 0.1 },
+                    colors: ['#ffb6c1', '#ffdde1', '#d81b60', '#ad1457', '#ffffff']
+                });
+            };
+
+            const startExperience = () => {
+                audio.play();
+                fireConfetti();
+                document.removeEventListener('click', startExperience);
+                document.removeEventListener('touchstart', startExperience);
+            };
+            
+            audio.play().then(() => {
+                fireConfetti(); 
+            }).catch(() => {
+                document.addEventListener('click', startExperience);
+                document.addEventListener('touchstart', startExperience);
+            });
+
+            const textString = "Selamat ulang tahun! Semoga panjang umur, murah rezeki, sehat selalu, dan dilancarkan segala urusan serta di kuliah nanti. Semoga hari-harimu selalu dipenuhi kebahagiaan! 🥳🎉";
+            const typingElement = document.getElementById('typing-text');
+            let index = 0;
+
+            function typeWriter() {
+                if (index < textString.length) {
+                    typingElement.innerHTML += textString.charAt(index);
+                    index++;
+                    setTimeout(typeWriter, 30);
+                } else {
+                    typingElement.classList.remove('cursor');
+                }
+            }
+            setTimeout(typeWriter, 1000);
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(el => observer.observe(el));
+        });
+    </script>
+
+</body>
+</html>
